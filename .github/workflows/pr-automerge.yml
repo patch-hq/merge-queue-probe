@@ -11,5 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.AUTOMERGE_TOKEN }}
         run: gh pr merge --auto "${{ github.event.pull_request.number }}" --repo "$GITHUB_REPOSITORY"
