@@ -6,4 +6,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 20
+      - uses: actions/checkout@v4
+      - run: |
+          if [ "${{ github.event_name }}" = merge_group ] && [ -f fail-in-queue ]; then echo "failing in the queue on purpose"; exit 1; fi
+          echo ok
